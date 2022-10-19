@@ -1,4 +1,5 @@
-기본 타입 정리
+ ```md
+ 기본 타입 정리
 JavaScript
 Primitive: number, string, boolean, bigint(최신타입 큰숫자), symbol, null, undefined
 Object: function, array..
@@ -11,10 +12,10 @@ Tuple
 Enum
 Any
 Void
-Null and Undefined
-Never
+Null and Undefined/Never
 Object
 Type assertions
+```
 
 기본타입 타입스크립트에서 선언할 때
 
@@ -25,9 +26,12 @@ Const isLoding:boolean = true; // 로딩상태값을 블리언으로 표현할 �
 null과 undefined은 선언할 때는 잘 쓰지 않는다. 하지만 함수에서는 쓰이고
 단독으로 안쓰인다. 
 
+
 Function person(): number | undefined {
 return undefined;
 }
+```
+
 
 
 // Type assertions
