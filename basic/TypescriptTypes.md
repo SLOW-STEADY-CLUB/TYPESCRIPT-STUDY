@@ -17,27 +17,28 @@ Object
 Type assertions
 ```
 
-기본타입 타입스크립트에서 선언하고 할당할 때
-```js
-const person:number = 2;// 인원을 숫자로 받을 때
-```
-```js
+기본타입 타입스크립트에서 선언할 때
+
+const person:number = 2; // 인원을 숫자로 받을 때
+
 Const isLoding:boolean = true; // 로딩상태값을 블리언으로 표현할 때
-```
-null과 undefined은 선언할 때는 잘 쓰지 않는다. 하지만 함수에서는
-```js
+
+null과 undefined은 선언할 때는 잘 쓰지 않는다. 하지만 함수에서는 쓰이고
+단독으로 안쓰인다. 
+
+
 Function person(): number | undefined {
 return undefined;
 }
 ```
 
+
+
 // Type assertions
-```md
 두가지 문법이 있다.
 실행은 동일하게 되지만, JSX문법 같은 경우에는 as 문법만 허용된다
-출처 - 공식문서
-https://typescript-kr.github.io/pages/basic-types.html
-```
+
+
 "angle-bracket" 문법
 
 ```ts
@@ -53,3 +54,6 @@ let someValue: any = "this is a string";
 
 let strLength: number = (someValue as string).length;
 ```
+
+출처 - 공식문서
+https://typescript-kr.github.io/pages/basic-types.html
