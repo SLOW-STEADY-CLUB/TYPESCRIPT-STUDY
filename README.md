@@ -1,4 +1,5 @@
-[1.React TypeScript 설치](#1-react-typescript-설치)
+[1. React TypeScript 설치](#1-react-typescript-설치)
+
 [2. 이미 만들어진 React에 설치](#2-이미-만들어진-react에-설치)
 
 ## 1. React TypeScript 설치
