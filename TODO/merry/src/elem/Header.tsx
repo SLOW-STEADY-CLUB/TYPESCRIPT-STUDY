@@ -11,7 +11,7 @@ const Header: React.FC = () => {
         Today Do it!
       </HeaderText>
       <AddBtn onClick={() => navigate("/add")}>
-        <p>➕</p>
+        <p>✎</p>
       </AddBtn>
     </Headers>
   );
