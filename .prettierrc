@@ -1,9 +1,9 @@
 {
-  "arrowParens": "avoid",
-  "singleQuote": false,
-  "semi": true,
-  "useTabs": false,
   "tabWidth": 2,
+  "useTabs": false,
+  "endOfLine": "lf",
+  "arrowParens": "avoid",
+  // "semi": true,
   "trailingComma": "all",
   "printWidth": 80,
   "editor.formatOnType": true
