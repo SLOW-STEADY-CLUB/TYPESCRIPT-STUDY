@@ -8,21 +8,27 @@
     },
     {
       "id": "-aJIbJlpYxUzBKv5IAz6R",
-      "done": false,
-      "date": "2022-11-23T23:22",
-      "content": "화로구이"
+      "content": "화로구이",
+      "date": "2022-11-23",
+      "done": true
     },
     {
       "id": "2-g3kwQ2o3-WqK9RDKmGc",
-      "done": false,
-      "date": "2022-11-26T23:43",
-      "content": "도토리 까는 날"
+      "content": "도토리 까는 날",
+      "date": "2022-11-26",
+      "done": true
     },
     {
-      "id": "NwP0gaYsVtBuycWFe0k65",
-      "done": false,
-      "date": "2022-11-19T00:04",
-      "content": "화이팅팅!!"
+      "id": "CwSOSl55u8STdBJyK7pqn",
+      "content": "잘 했어요~",
+      "date": "2022-11-19",
+      "done": true
+    },
+    {
+      "id": "n_2IbJhm8g5ZBqAhwVmN9",
+      "content": "도토리 까는 날",
+      "date": "2022-11-19",
+      "done": true
     }
   ],
   "comments": [],

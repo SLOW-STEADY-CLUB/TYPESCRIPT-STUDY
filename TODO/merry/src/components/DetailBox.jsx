@@ -20,14 +20,21 @@ const DetailBox = () => {
 
   useEffect(() => {
     getTodo();
-  }, []);
+  }, [todoList]);
 
   const onClickRemoveBtn = id => {
     axios.delete(`http://localhost:3001/posts/${id}`);
     navigate("/");
   };
 
-  console.log(todoList);
+  const onClickOkBtn = todo => {
+    axios.put(`http://localhost:3001/posts/${todo.id}`, {
+      id: todo.id,
+      content: todo.content,
+      date: todo.date,
+      done: !todo.done,
+    });
+  };
 
   return (
     <div>
@@ -35,12 +42,12 @@ const DetailBox = () => {
       {todoList[0] !== undefined &&
         todoList.map(todo => {
           return (
-            <Container>
+            <Container key={todo.id} isDone={todo.done}>
               <ContentBox>
                 <p>{todo.date}</p>
                 <h4>{todo.content}</h4>
               </ContentBox>
-              <RemoveBtn>✓</RemoveBtn>
+              <RemoveBtn onClick={() => onClickOkBtn(todo)}>✓</RemoveBtn>
               <RemoveBtn onClick={() => onClickRemoveBtn(todo.id)}>🗑</RemoveBtn>
             </Container>
           );
@@ -54,6 +61,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  background-color: ${props => (props.isDone ? " #ccd5ae" : "#fefae0")};
 `;
 
 const ContentBox = styled.div`
@@ -62,9 +70,20 @@ const ContentBox = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  p {
+    font-size: 12px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
 `;
 
 const RemoveBtn = styled.button`
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
   border: 0px;
   background-color: transparent;
 `;
