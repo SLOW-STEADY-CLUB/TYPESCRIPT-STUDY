@@ -46,20 +46,21 @@ const MainCalender = () => {
 };
 
 const CalendarContainer = styled.div`
-  max-width: 600px;
+  max-width: 700px;
   margin: auto;
   margin-top: 20px;
   padding: 10px;
   border-radius: 3px;
 
   .react-calendar {
-    width: 500px;
+    width: 600px;
     max-width: 100%;
     height: 500px;
     background: #fefae0;
     border: 0px;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.125em;
+    font-size: large;
   }
 
   .react-calendar__tile--active {
@@ -70,11 +71,20 @@ const CalendarContainer = styled.div`
   .react-calendar__tile--active:enabled:focus {
     background: #e9edc9;
   }
+
+  .react-calendar__tile {
+    max-width: 100%;
+    padding: 35px 15px;
+    background: none;
+    text-align: center;
+    line-height: 16px;
+    font-size: large;
+  }
 `;
 
 const Dot = styled.div`
-  height: 8px;
-  width: 8px;
+  height: 15px;
+  width: 15px;
   background-color: #ccd5ae;
   border-radius: 50%;
   display: flex;
