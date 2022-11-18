@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import MainCalender from "../components/MainCalender";
+import DetailBox from "../components/DetailBox";
 import Header from "../elem/Header";
 
-const Main: React.FC = () => {
+const Detail: React.FC = () => {
   return (
     <Container>
       <Header />
-      <MainCalender />
+      <DetailBox />
     </Container>
   );
 };
@@ -19,4 +19,4 @@ const Container = styled.div`
   background-color: #fefae0;
 `;
 
-export default Main;
+export default Detail;

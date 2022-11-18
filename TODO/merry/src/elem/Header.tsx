@@ -7,22 +7,28 @@ const Header : React.FC = () => {
 
     return (
         <Headers>
-        <HeaderText>Today Do it!</HeaderText>
-        <AddBtn onClick={()=>navigate("/add")}></AddBtn>
+        <HeaderText style={{"cursor":"pointer"}} onClick={()=>navigate("/")}>Today Do it!</HeaderText>
+        <AddBtn onClick={()=>navigate("/add")}>➕</AddBtn>
         </Headers>
         )
 }
 
 const Headers = styled.div`
-    width: 800px;
+    max-width: 1000px;
+    width: 100%;
     height: 120px;
-    background-color: #cdb4db;
-    color : white;
+    background-color: #faedcd;
+    color : #d4a373;
     font-size: 50px;
     font-family: sans-serif;
     font-weight: 900;
-    position: fixed;
+    //position: fixed;
     margin-bottom: 50px;
+
+    :hover{
+        background-color: #d4a373;
+        color:#faedcd;
+    }
 `
 const HeaderText = styled.p`
     margin-top: 0px;
@@ -37,11 +43,12 @@ const AddBtn = styled.div`
     border-radius: 50%;
     border : 2px solid #ddd;
     position: relative;
+    text-align: center;
     top:-95px;
     left: 350px;
 
     :hover {
-        background-color: #8338ec;
+        background-color: #d4a373;
     }
 `
 export default Header
