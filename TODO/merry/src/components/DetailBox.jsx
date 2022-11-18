@@ -10,11 +10,11 @@ const DetailBox = () => {
 
   const getTodo = async () => {
     const response = await axios.get("http://localhost:3001/posts");
-    const dayList = response.data.map((todo) => {
+    const dayList = response.data.map(todo => {
       return (todo.date = todo.date.split("T")[0]);
     });
-    const targetDay = dayList.find((x) => x === day);
-    const dateList = response.data.filter((x) => x.date === day);
+    const targetDay = dayList.find(x => x === day);
+    const dateList = response.data.filter(x => x.date === day);
     setTodoList(dateList);
   };
 
@@ -22,7 +22,7 @@ const DetailBox = () => {
     getTodo();
   }, []);
 
-  const onClickRemoveBtn = (id) => {
+  const onClickRemoveBtn = id => {
     axios.delete(`http://localhost:3001/posts/${id}`);
     navigate("/");
   };
@@ -33,13 +33,14 @@ const DetailBox = () => {
     <div>
       {todoList[0] === undefined && <p>할 일이 없습니다! 추가해주세요! </p>}
       {todoList[0] !== undefined &&
-        todoList.map((todo) => {
+        todoList.map(todo => {
           return (
             <Container>
               <ContentBox>
                 <p>{todo.date}</p>
                 <h4>{todo.content}</h4>
               </ContentBox>
+              <RemoveBtn>✓</RemoveBtn>
               <RemoveBtn onClick={() => onClickRemoveBtn(todo.id)}>🗑</RemoveBtn>
             </Container>
           );
