@@ -2,6 +2,7 @@
 
 # dependencies
 /TODO/merry/node_modules
+/TODO/dd/node_modules
 /.pnp
 .pnp.js
 
