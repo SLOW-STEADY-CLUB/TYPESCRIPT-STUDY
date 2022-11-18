@@ -14,9 +14,8 @@ const DetailBox = () => {
       return (todo.date = todo.date.split("T")[0]);
     });
     const targetDay = dayList.find((x) => x === day);
-    const dateList = response.data.find((x) => x.date === day);
-    const doList = [dateList];
-    setTodoList(doList);
+    const dateList = response.data.filter((x) => x.date === day);
+    setTodoList(dateList);
   };
 
   useEffect(() => {
@@ -27,6 +26,8 @@ const DetailBox = () => {
     axios.delete(`http://localhost:3001/posts/${id}`);
     navigate("/");
   };
+
+  console.log(todoList);
 
   return (
     <div>
@@ -39,7 +40,7 @@ const DetailBox = () => {
                 <p>{todo.date}</p>
                 <h4>{todo.content}</h4>
               </ContentBox>
-              <button onClick={() => onClickRemoveBtn(todo.id)}>🗑</button>
+              <RemoveBtn onClick={() => onClickRemoveBtn(todo.id)}>🗑</RemoveBtn>
             </Container>
           );
         })}
@@ -60,6 +61,11 @@ const ContentBox = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+`;
+
+const RemoveBtn = styled.button`
+  border: 0px;
+  background-color: transparent;
 `;
 
 export default DetailBox;
