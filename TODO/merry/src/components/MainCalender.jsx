@@ -13,7 +13,7 @@ const MainCalender = () => {
 
   const getTodo = async () => {
     const response = await axios.get("http://localhost:3001/posts");
-    const res = response.data.map((todo) => {
+    const res = response.data.map(todo => {
       return (todo.date = todo.date.split("T")[0]);
     });
     setDot(res);
@@ -31,12 +31,12 @@ const MainCalender = () => {
         formatDay={(locale, date) =>
           date.toLocaleString("en", { day: "numeric" })
         }
-        onClickDay={(date) => {
+        onClickDay={date => {
           navigate(`/detail/${moment(date).format("YYYY-MM-DD")}`);
         }}
         showNeighboringMonth={false}
         tileContent={({ date, view }) => {
-          if (dot.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
+          if (dot.find(x => x === moment(date).format("YYYY-MM-DD"))) {
             return <Dot></Dot>;
           }
         }}
