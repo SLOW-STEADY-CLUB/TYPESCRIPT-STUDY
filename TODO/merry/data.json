@@ -2,33 +2,39 @@
   "posts": [
     {
       "id": "7OIT7gCad0S4ztE-mTFf2",
-      "done": false,
-      "date": "2022-12-25T14:00",
-      "content": "크리스마스 놀러가기"
+      "content": "크리스마스 놀러가기",
+      "date": "2022-12-25",
+      "done": false
     },
     {
       "id": "-aJIbJlpYxUzBKv5IAz6R",
       "content": "화로구이",
       "date": "2022-11-23",
-      "done": true
+      "done": false
     },
     {
       "id": "2-g3kwQ2o3-WqK9RDKmGc",
       "content": "도토리 까는 날",
       "date": "2022-11-26",
-      "done": true
+      "done": false
     },
     {
       "id": "CwSOSl55u8STdBJyK7pqn",
       "content": "잘 했어요~",
       "date": "2022-11-19",
-      "done": true
+      "done": false
     },
     {
       "id": "n_2IbJhm8g5ZBqAhwVmN9",
       "content": "도토리 까는 날",
       "date": "2022-11-19",
-      "done": true
+      "done": false
+    },
+    {
+      "id": "nNvh3zi8nRV1JJE-G4XFa",
+      "done": false,
+      "content": "가디건의 포인트는 체리입니다",
+      "date": "2022-11-25"
     }
   ],
   "comments": [],

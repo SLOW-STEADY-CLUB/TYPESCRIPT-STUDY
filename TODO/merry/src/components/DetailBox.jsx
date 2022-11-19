@@ -7,38 +7,43 @@ const DetailBox = () => {
   const navigate = useNavigate();
   const { day } = useParams();
   const [todoList, setTodoList] = useState([]);
+  const [todo, setTodo] = useState(false);
 
   const getTodo = async () => {
     const response = await axios.get("http://localhost:3001/posts");
-    const dayList = response.data.map(todo => {
-      return (todo.date = todo.date.split("T")[0]);
-    });
-    const targetDay = dayList.find(x => x === day);
     const dateList = response.data.filter(x => x.date === day);
     setTodoList(dateList);
   };
 
-  useEffect(() => {
-    getTodo();
-  }, [todoList]);
-
   const onClickRemoveBtn = id => {
     axios.delete(`http://localhost:3001/posts/${id}`);
-    navigate("/");
+    setTodo(!todo);
   };
 
   const onClickOkBtn = todo => {
-    axios.put(`http://localhost:3001/posts/${todo.id}`, {
-      id: todo.id,
-      content: todo.content,
-      date: todo.date,
-      done: !todo.done,
-    });
+    axios
+      .put(`http://localhost:3001/posts/${todo.id}`, {
+        id: todo.id,
+        content: todo.content,
+        date: todo.date,
+        done: !todo.done,
+      })
+      .then(setTodo(!todo));
   };
+
+  useEffect(() => {
+    getTodo();
+  }, [todo]);
+
+  console.log(todo);
 
   return (
     <div>
-      {todoList[0] === undefined && <p>할 일이 없습니다! 추가해주세요! </p>}
+      {todoList[0] === undefined && (
+        <h1 style={{ marginLeft: "150px" }}>
+          할 일이 없습니다! 추가해주세요!{" "}
+        </h1>
+      )}
       {todoList[0] !== undefined &&
         todoList.map(todo => {
           return (
