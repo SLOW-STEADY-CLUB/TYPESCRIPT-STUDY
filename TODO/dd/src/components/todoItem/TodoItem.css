@@ -1,0 +1,15 @@
+.cardBox {
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: relative;
+  width: 384px;
+  height: 419px;
+  left: 64px;
+  top: 300px;
+}
