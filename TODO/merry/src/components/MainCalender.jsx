@@ -90,4 +90,5 @@ const Dot = styled.div`
   display: flex;
   margin-left: 1px;
 `;
+
 export default MainCalender;
