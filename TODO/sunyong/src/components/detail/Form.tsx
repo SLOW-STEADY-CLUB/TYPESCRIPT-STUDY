@@ -7,16 +7,20 @@ import { useRecoilState } from 'recoil'
 
 const Form : React.FC = () => {
 
+  //id +1씩 추가
   const nextId = useRef(1);
 
+  //날짜 선택 useState
   const [inputs, setInputs] =useState({
     title:'',
     isDone:false, 
     id: 1,
   })
 
+  //recoil value
   const [todoList, setTodoList] = useRecoilState(postItem);
 
+  //input value
   const onChange = (e : any) => {
     const { name, value } = e.target; 
     setInputs({
@@ -25,20 +29,17 @@ const Form : React.FC = () => {
     });
   };
 
+  //recoil value로 추가하기
   const as = () => {
-    if(inputs.title.length === 0) {
-      alert('빈칸임')
+    if(inputs.title.length === 0 || todoList.length === 10) {
+      alert('다시 확인해 주세요')
       return
-    }
-    if(todoList.length === 10) {
-      alert('최대 개수입니다')
-      return;
     }
     setTodoList(todoList.concat(inputs))
     setInputs({
       title : '',
       isDone : false,
-      id : nextId.current += 1
+      id : nextId.current += 1,
     })
   }
 
@@ -48,6 +49,7 @@ const Form : React.FC = () => {
         name='title'
         type={"text"}
         onChange={onChange}
+        placeholder="오늘의 TODO를 적어주세요 ! (최대 10개)"
         />
         <button onClick={()=> {as()}}>추가하기</button>
     </Test>
@@ -56,7 +58,6 @@ const Form : React.FC = () => {
 
 const Test = styled.div`
     margin-top: 2rem;
-    background-color: #497174;
     height: 10rem;
     gap: 10rem;
 
@@ -77,8 +78,14 @@ const Test = styled.div`
     button {
         width: 6em;
         height: 3rem;
-        border-radius: 0.4rem;
+        border-radius: 0.8rem;
         border: 1px solid #EFF5F5;
+        background-color: #8EC3B0;
+        color: white;
+        :hover {
+          background-color: white;
+          color: #8EC3B0;
+        }
     }
 `
 
