@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { TodoState } from "../elem/interface";
 
 const DetailBox: React.FC = () => {
-  const navigate = useNavigate();
   const { day } = useParams();
   const [todoList, setTodoList] = useState([]);
-  const [todo, setTodo] = useState(false);
+  const [view, setView] = useState(false);
 
   const getTodo = async () => {
     const response = await axios.get("http://localhost:3001/posts");
@@ -17,10 +16,12 @@ const DetailBox: React.FC = () => {
   };
 
   const onClickRemoveBtn = (id: string) => {
+    setView(!view);
     axios.delete(`http://localhost:3001/posts/${id}`);
   };
 
   const onClickOkBtn = (todo: TodoState) => {
+    setView(!view);
     axios.put(`http://localhost:3001/posts/${todo.id}`, {
       id: todo.id,
       content: todo.content,
@@ -31,7 +32,7 @@ const DetailBox: React.FC = () => {
 
   useEffect(() => {
     getTodo();
-  }, []);
+  }, [view]);
 
   return (
     <div>
