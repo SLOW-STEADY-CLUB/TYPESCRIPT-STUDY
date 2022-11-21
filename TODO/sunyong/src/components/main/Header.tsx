@@ -9,14 +9,14 @@ const Header : React.FC = () => {
 
   return (
     <Head className='array'>
-      <h2>투두 리스트</h2>
+      <h2>TODO List</h2>
       <p onClick={() => { navigate(`/createTodo`) }}><BiPlus /></p>
     </Head>
   )
 }
 
 const Head = styled.div`
-    background-color: #497174;
+    background-color: #9ED5C5;
     height: 5rem;
     color: white;
     gap: 2rem;
