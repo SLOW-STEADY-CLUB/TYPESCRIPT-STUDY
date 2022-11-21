@@ -5,6 +5,9 @@ import { itemGet } from 'apis/api'
 import { useRecoilState } from 'recoil'
 import { itemList } from 'recoil/atoms'
 
+import "./Calendar.css"
+
+
 const Lists : React.FC = () => {
 
     const [list, setList] = useRecoilState(itemList);
