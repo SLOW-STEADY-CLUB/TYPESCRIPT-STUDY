@@ -4,18 +4,7 @@ import { useForm } from "react-hook-form";
 import { nanoid } from "nanoid";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-interface TodoState {
-  id: string;
-  content: string;
-  date: string;
-  done: boolean;
-}
-
-interface Data {
-  content: string;
-  date: string;
-}
+import { TodoState } from "../elem/interface";
 
 const AddBox: React.FC = () => {
   const navigate = useNavigate();
