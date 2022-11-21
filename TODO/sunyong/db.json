@@ -5,6 +5,11 @@
         "title": "오늘의 투두들",
         "isDone": false,
         "id": 0
+      },
+      {
+        "title": "오늘의 투두들",
+        "isDone": false,
+        "id": 0
       }
     ],
     [
@@ -29,61 +34,17 @@
   ],
   "comments": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "title": "오늘의 투두들",
+      "isDone": true,
+      "id": 0,
+      "day": "2022-11-21T18:41:35.915Z"
     },
-    [
-      {
-        "title": "오늘의 투두들",
-        "isDone": true,
-        "id": 0
-      },
-      {
-        "title": "aa",
-        "isDone": false,
-        "id": 1
-      }
-    ],
-    [
-      {
-        "title": "오늘의 투두들",
-        "isDone": true,
-        "id": 0
-      },
-      {
-        "title": "aa",
-        "isDone": false,
-        "id": 1
-      },
-      {
-        "title": "aa",
-        "isDone": false,
-        "id": 1
-      },
-      {
-        "title": "aaaas",
-        "isDone": false,
-        "id": 2
-      }
-    ],
-    [
-      {
-        "title": "오늘의 투두들",
-        "isDone": true,
-        "id": 0
-      },
-      {
-        "title": "aa",
-        "isDone": false,
-        "id": 1
-      },
-      {
-        "title": "aaaa",
-        "isDone": false,
-        "id": 2
-      }
-    ]
+    {
+      "title": "오늘의 투두들",
+      "isDone": true,
+      "id": 1,
+      "day": "2022-11-21T18:41:35.915Z"
+    }
   ],
   "profile": {
     "name": "typicode"

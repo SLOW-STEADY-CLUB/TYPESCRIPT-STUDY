@@ -1,16 +1,22 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import { itemGet } from 'apis/api'
 import { useRecoilState } from 'recoil'
 import { itemList } from 'recoil/atoms'
 
+import Calendar from "react-calendar";
 import "./Calendar.css"
+import { eu } from "date-fns/esm/locale";
 
 
 const Lists : React.FC = () => {
 
     const [list, setList] = useRecoilState(itemList);
+
+    const [value, onChange] = useState(new Date());
+
+    console.log(value)
 
     useEffect(() => {
         itemGet().then((res : any) => {
@@ -20,24 +26,20 @@ const Lists : React.FC = () => {
 
     return (
         <>
+        <Calendar
+        value={value}
+        onChange={onChange}
+        />
             <Bar className='array'>
-                <p>오늘 꼭 해내자 😃</p>
+                <p>오늘의 TODO 😃</p>
             </Bar>
-            <Sort>
-                <InProgress className='array'>
-                    <p>~ ing</p>
-                </InProgress>
-                <Done className='array'>
-                    <p>Done</p>
-                </Done>
-            </Sort>
-            <Sort>
+            <div className='array'>
                 <ItemBox>
                     {
                         list?.map((a : any) => {
                             return (
                                 <Item key={a.id}>
-                                    <p>{a.title}</p>
+                                    <li>{a.title}</li>
                                     <input 
                                     onClick={()=> {itemGet()}}
                                     type={'checkbox'}
@@ -47,55 +49,46 @@ const Lists : React.FC = () => {
                         })
                     }
                 </ItemBox>
-            </Sort>
+            </div>
 
         </>
     )
 }
 
 const Bar = styled.div`
-    width: 100%;
     height: 4rem;
     font-size: 1.4rem;
     font-weight: bold;
 `
 
-const Sort = styled.div`
-    display: flex;
-`
-
-const InProgress = styled.div`
-    width: 50%;
-    height: 3rem;
-    font-size: 1.4rem;
-    font-weight: bold;
-`
-
-const Done = styled.div`
-    width: 50%;
-    height: 3rem;
-    font-size: 1.4rem;
-    font-weight: bold;
-`
-
 const ItemBox = styled.div`
-    border: 1px solid red;
-    width: 50%;
+    width: 90%;
     height: 100%;
     font-size: 1.6rem;
     font-weight: 700;
+    box-shadow: 0px 2px 8px rgba(17, 24, 39, 0.25);
     
     input {
         cursor: pointer;
-        width: 1.6rem;
-        height: 1.6rem;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        appearance: none;
+        border: 1px solid #999;
+    }
+
+    input[type="checkbox"]:checked {
+        background: #8EC3B0;
     }
 `
 
 const Item = styled.div`
     display: flex;
     justify-content: space-between;
-   padding: 1rem 0px;
-`
+    align-items: center;
+    background-color: white;
+    padding: 0px 1rem;
 
+    height: 5rem;
+`
 export default Lists
