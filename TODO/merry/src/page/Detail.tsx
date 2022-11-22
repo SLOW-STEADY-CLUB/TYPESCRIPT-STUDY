@@ -17,6 +17,7 @@ const Container = styled.div`
   height: 100vh;
   align-items: center;
   background-color: #fefae0;
+  margin: auto;
 `;
 
 export default Detail;

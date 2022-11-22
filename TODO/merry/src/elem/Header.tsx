@@ -23,7 +23,7 @@ const Headers = styled.div`
   height: 120px;
   background-color: #faedcd;
   color: #d4a373;
-  font-size: 50px;
+  font-size: 5rem;
   font-family: sans-serif;
   font-weight: 900;
   margin-bottom: 50px;
@@ -48,16 +48,17 @@ const AddBtn = styled.div`
   color: #d4a373;
   position: relative;
   text-align: center;
-  top: -90px;
+  top: -35px;
   left: 350px;
 
   p {
     position: relative;
-    top: -42px;
+    top: 15px;
   }
 
   :hover {
     background-color: #d4a373;
+    color: white;
   }
 `;
 export default Header;
