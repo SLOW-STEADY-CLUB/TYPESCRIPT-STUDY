@@ -19,22 +19,10 @@
       "done": false
     },
     {
-      "id": "CwSOSl55u8STdBJyK7pqn",
-      "content": "잘 했어요~",
-      "date": "2022-11-19",
-      "done": false
-    },
-    {
-      "id": "n_2IbJhm8g5ZBqAhwVmN9",
-      "content": "도토리 까는 날",
-      "date": "2022-11-19",
-      "done": false
-    },
-    {
       "id": "nNvh3zi8nRV1JJE-G4XFa",
-      "done": false,
       "content": "가디건의 포인트는 체리입니다",
-      "date": "2022-11-25"
+      "date": "2022-11-25",
+      "done": true
     }
   ],
   "comments": [],
