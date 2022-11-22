@@ -11,6 +11,7 @@ import { atom } from "recoil";
     default: [{
       title: "오늘의 투두들",
       isDone:true,
-      id: 0
+      id: 0,
+      day: '9999-99-99'
     }]
   });
