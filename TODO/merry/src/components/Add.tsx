@@ -4,28 +4,25 @@ import { useForm } from "react-hook-form";
 import { nanoid } from "nanoid";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-interface TodoState {
-  id: string;
-  content: string;
-  done: boolean;
-}
+import { TodoState } from "../elem/interface";
 
 const AddBox: React.FC = () => {
   const navigate = useNavigate();
 
-  const addTodoList = async (data: any) => {
+  const addTodoList = async () => {
+    const date = getValues("date");
+    const content = getValues("content");
     const todo: TodoState = {
       id: nanoid(),
       done: false,
-      ...data,
+      content,
+      date: date.split("T")[0],
     };
     axios.post("http://localhost:3001/posts", todo).then(() => navigate("/"));
   };
 
   const {
     register,
-    setError,
     getValues,
     formState: { errors, isDirty, isSubmitting },
     handleSubmit,

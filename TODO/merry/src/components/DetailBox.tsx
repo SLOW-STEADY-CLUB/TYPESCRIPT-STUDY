@@ -1,33 +1,27 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { TodoState } from "../elem/interface";
 
-const DetailBox = () => {
-  const navigate = useNavigate();
+const DetailBox: React.FC = () => {
   const { day } = useParams();
   const [todoList, setTodoList] = useState([]);
+  const [view, setView] = useState(false);
 
   const getTodo = async () => {
     const response = await axios.get("http://localhost:3001/posts");
-    const dayList = response.data.map(todo => {
-      return (todo.date = todo.date.split("T")[0]);
-    });
-    const targetDay = dayList.find(x => x === day);
-    const dateList = response.data.filter(x => x.date === day);
+    const dateList = response.data.filter((x: TodoState) => x.date === day);
     setTodoList(dateList);
   };
 
-  useEffect(() => {
-    getTodo();
-  }, [todoList]);
-
-  const onClickRemoveBtn = id => {
+  const onClickRemoveBtn = (id: string) => {
+    setView(!view);
     axios.delete(`http://localhost:3001/posts/${id}`);
-    navigate("/");
   };
 
-  const onClickOkBtn = todo => {
+  const onClickOkBtn = (todo: TodoState) => {
+    setView(!view);
     axios.put(`http://localhost:3001/posts/${todo.id}`, {
       id: todo.id,
       content: todo.content,
@@ -36,13 +30,21 @@ const DetailBox = () => {
     });
   };
 
+  useEffect(() => {
+    getTodo();
+  }, [view]);
+
   return (
     <div>
-      {todoList[0] === undefined && <p>할 일이 없습니다! 추가해주세요! </p>}
+      {todoList[0] === undefined && (
+        <h1 style={{ marginLeft: "150px" }}>
+          할 일이 없습니다! 추가해주세요!{" "}
+        </h1>
+      )}
       {todoList[0] !== undefined &&
-        todoList.map(todo => {
+        todoList.map((todo: TodoState) => {
           return (
-            <Container key={todo.id} isDone={todo.done}>
+            <Container key={todo.id} done={todo.done}>
               <ContentBox>
                 <p>{todo.date}</p>
                 <h4>{todo.content}</h4>
@@ -56,12 +58,12 @@ const DetailBox = () => {
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<{ done: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  background-color: ${props => (props.isDone ? " #ccd5ae" : "#fefae0")};
+  background-color: ${props => (props.done ? "#ccd5ae" : "#fefae0")};
 `;
 
 const ContentBox = styled.div`

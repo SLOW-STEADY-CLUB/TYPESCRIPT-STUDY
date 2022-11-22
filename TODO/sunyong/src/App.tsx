@@ -1,11 +1,8 @@
 import React from 'react';
+import Router from 'shared/Router';
 
-function App() {
-  return (
-    <div>
-      앱
-    </div>
-  );
+const App : React.FC = () => {
+  return <Router />
 }
 
 export default App;

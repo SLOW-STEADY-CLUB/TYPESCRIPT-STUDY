@@ -3,7 +3,7 @@
   "useTabs": false,
   "endOfLine": "lf",
   "arrowParens": "avoid",
-  // "semi": true,
+  "semi": true,
   "trailingComma": "all",
   "printWidth": 80,
   "editor.formatOnType": true

@@ -5,15 +5,16 @@ import "react-calendar/dist/Calendar.css";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import moment from "moment";
+import { TodoState } from "../elem/interface";
 
-const MainCalender = () => {
+const MainCalender: React.FC = () => {
   const navigate = useNavigate();
   const [value, onChange] = useState(new Date());
   const [dot, setDot] = useState([]);
 
   const getTodo = async () => {
     const response = await axios.get("http://localhost:3001/posts");
-    const res = response.data.map(todo => {
+    const res = response.data.map((todo: TodoState) => {
       return (todo.date = todo.date.split("T")[0]);
     });
     setDot(res);
@@ -35,9 +36,13 @@ const MainCalender = () => {
           navigate(`/detail/${moment(date).format("YYYY-MM-DD")}`);
         }}
         showNeighboringMonth={false}
-        tileContent={({ date, view }) => {
-          if (dot.find(x => x === moment(date).format("YYYY-MM-DD"))) {
+        tileContent={({ date, view }): JSX.Element => {
+          if (
+            dot.find((x: string) => x === moment(date).format("YYYY-MM-DD"))
+          ) {
             return <Dot></Dot>;
+          } else {
+            return <></>;
           }
         }}
       />
@@ -90,4 +95,5 @@ const Dot = styled.div`
   display: flex;
   margin-left: 1px;
 `;
+
 export default MainCalender;
