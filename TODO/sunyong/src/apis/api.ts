@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Todo } from "components/TypeList";
+import { Todo, Todo2 } from "components/TypeList";
 
 export const itemGet = async () => {
     try{
@@ -10,10 +10,10 @@ export const itemGet = async () => {
     }   
 }
 
-export const itemPost = async (data : any) => {
+export const itemPost = async (data : Todo2) => {
     const answer = true
     try{
-        console.log(data.length)
+        
         if(data.length === 1) {
             alert('TODO List는 꼭 입력해주세요')
             return
@@ -26,7 +26,24 @@ export const itemPost = async (data : any) => {
     }
 }
 
-export const DeletePost = async (data : any) => {
+export const itemPut = async (data : Todo) => { 
+    console.log(data);
+    const answer = true
+    try{
+        const res = await axios.put(`http://localhost:3001/comments/${data.id}`, {
+            id: data.id,
+            title: data.title,
+            isDone: !data.isDone,
+            day: data.day,
+        })
+        console.log(res)
+    }catch(err) {
+        console.log(err)
+        return !answer
+    }
+}
+
+export const itemDelete = async (data : any) => {
     try{
         console.log(data)
         const res = await axios.delete(`http://localhost:3001/comments/${data}`)
