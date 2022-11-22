@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import { itemGet } from 'apis/api'
+import { itemDelete, itemGet, itemPut } from 'apis/api'
 import { useRecoilState } from 'recoil'
 import { itemList } from 'recoil/atoms'
+import { MdDelete } from 'react-icons/md';
 
 import Calendar from "react-calendar";
 import "./Calendar.css"
-import { eu } from "date-fns/esm/locale";
-
+import moment from 'moment'
 
 const Lists : React.FC = () => {
 
-    const [list, setList] = useRecoilState(itemList);
-
+    const [list, setList] = useRecoilState(itemList);    
     const [value, onChange] = useState(new Date());
+    const [test, setTest] =useState(false)
 
-    console.log(value)
-
+    const selectDay = moment(value).format("YYYY-MM-DD")
+    
     useEffect(() => {
         itemGet().then((res : any) => {
             setList(res)
         })
-    }, [])
+    }, [test])
 
     return (
         <>
@@ -35,22 +35,33 @@ const Lists : React.FC = () => {
             </Bar>
             <div className='array'>
                 <ItemBox>
+                {
+                    list.length === 0 ? 
+                        <Item>
+                            <p>오늘의 TODO를 작성해주세요</p>
+                        </Item>
+                 : <>
                     {
                         list?.map((a : any) => {
                             return (
                                 <Item key={a.id}>
                                     <li>{a.title}</li>
-                                    <input 
-                                    onClick={()=> {itemGet()}}
-                                    type={'checkbox'}
-                                    />
+                                    <div>
+                                         <label
+                                        onClick={()=> {itemDelete(a.id); setTest(!test)}}
+                                         ><MdDelete /></label>
+                                        <input 
+                                        onClick={()=> {itemPut(a)}}
+                                        type={'checkbox'}
+                                        />
+                                    </div>
                                 </Item>
                             )
                         })
-                    }
+                    }</>
+                } 
                 </ItemBox>
             </div>
-
         </>
     )
 }
@@ -70,15 +81,9 @@ const ItemBox = styled.div`
     
     input {
         cursor: pointer;
-        width: 3rem;
-        height: 3rem;
-        border-radius: 50%;
-        appearance: none;
+        width: 2rem;
+        height: 2rem;
         border: 1px solid #999;
-    }
-
-    input[type="checkbox"]:checked {
-        background: #8EC3B0;
     }
 `
 
@@ -88,7 +93,18 @@ const Item = styled.div`
     align-items: center;
     background-color: white;
     padding: 0px 1rem;
-
     height: 5rem;
+
+    p {
+        color: gray;
+    }
+
+    label {
+        cursor: pointer;
+    }
+
+    input {
+        margin-left: 2rem;
+    }
 `
 export default Lists
