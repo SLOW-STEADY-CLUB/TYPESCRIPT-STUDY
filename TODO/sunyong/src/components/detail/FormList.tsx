@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom';
 
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useResetRecoilState } from 'recoil'
 import { postItem } from 'recoil/atoms'
 import { itemPost } from 'apis/api';
 import { Todo } from 'components/TypeList';
@@ -12,17 +12,14 @@ import { MdDelete } from 'react-icons/md';
 import { BsFillBackspaceFill } from 'react-icons/bs';
 import { AiFillFileAdd } from 'react-icons/ai';
 
-import Calendar from 'react-calendar';
-
 const FormList: React.FC = () => {
 
     const navigate = useNavigate();
 
     const [todo, setTodo] = useRecoilState(postItem);
-    const [value, onChange] = useState(new Date());
 
-    let aaa = {day : value.toDateString()}
-    console.log(aaa)
+    //recoli value
+    const reset = useResetRecoilState(postItem)
 
     //삭제 함수
     const Del = (data: number) => {
@@ -33,12 +30,6 @@ const FormList: React.FC = () => {
 
     return (
         <>
-            <div>
-                <Calendar
-                    value={value}
-                    onChange={onChange}
-                />
-            </div>
             <Sort className='array'>
                 {
                     todo?.map((a: Todo) => {
@@ -53,10 +44,9 @@ const FormList: React.FC = () => {
                     })
                 }
             </Sort>
-
             <ButtonArray className='array'>
                 <Back className='array'
-                    onClick={() => { navigate('/') }}
+                    onClick={() => { navigate('/'); reset()}}
                 >
                     <h2><BsFillBackspaceFill /></h2>
                 </Back>
@@ -65,6 +55,7 @@ const FormList: React.FC = () => {
                         itemPost(todo).then((res) => {
                             if (res) {
                                 navigate('/')
+                                reset()
                             } else {
                                 alert('생성에 실패했습니다')
                             }
